@@ -1,0 +1,14 @@
+include:
+  - project: 'devops/gitlab-ci-template'
+    file: '/.Docker.gitlab-ci.yml'
+
+build-docker:
+  extends: .build-docker-template
+  variables:
+    _DOCKER_FILE_PATH: images/production/Containerfile
+    _DOCKER_CONTEXT_PATH: .
+    _DOCKER_BUILD_EXTRA_ARGS: ''
+    FRAPPE_BRANCH: $CI_COMMIT_REF_NAME
+    FRAPPE_PATH: https://gitlab.yody.io/erp/next/frappe.git
+    ERPNEXT_BRANCH: $CI_COMMIT_REF_NAME
+    ERPNEXT_REPO: https://gitlab.yody.io/erp/next/erpnext.git
