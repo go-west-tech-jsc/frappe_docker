@@ -104,6 +104,11 @@ RUN apt-get update \
 
 USER frappe
 
+ARG FRAPPE_BRANCH
+ARG FRAPPE_PATH
+ARG ERPNEXT_REPO
+ARG ERPNEXT_BRANCH
+
 RUN bench init \
   --frappe-branch=${FRAPPE_BRANCH} \
   --frappe-path=${FRAPPE_PATH} \
