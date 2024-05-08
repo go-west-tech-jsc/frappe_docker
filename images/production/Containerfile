@@ -1,5 +1,11 @@
 ARG PYTHON_VERSION=3.11.6
 ARG DEBIAN_BASE=bookworm
+
+ARG FRAPPE_BRANCH=version-15
+ARG FRAPPE_PATH=https://github.com/frappe/frappe
+ARG ERPNEXT_REPO=https://github.com/frappe/erpnext
+ARG ERPNEXT_BRANCH=version-15
+
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_BASE} AS base
 
 ARG WKHTMLTOPDF_VERSION=0.12.6.1-3
@@ -98,10 +104,11 @@ RUN apt-get update \
 
 USER frappe
 
-ARG FRAPPE_BRANCH=version-15
-ARG FRAPPE_PATH=https://github.com/frappe/frappe
-ARG ERPNEXT_REPO=https://github.com/frappe/erpnext
-ARG ERPNEXT_BRANCH=version-15
+ARG FRAPPE_BRANCH
+ARG FRAPPE_PATH
+ARG ERPNEXT_REPO
+ARG ERPNEXT_BRANCH
+
 RUN bench init \
   --frappe-branch=${FRAPPE_BRANCH} \
   --frappe-path=${FRAPPE_PATH} \
