@@ -12,3 +12,6 @@ build-docker:
       --build-arg="FRAPPE_PATH=https://oauth2:$(CI_GITLAB_ACCESS_TOKEN)@gitlab.yody.io/erp/next/frappe.git"
       --build-arg="ERPNEXT_BRANCH=$(CI_COMMIT_REF_NAME)"
       --build-arg="ERPNEXT_REPO=https://oauth2:$(CI_GITLAB_ACCESS_TOKEN)@gitlab.yody.io/erp/next/erpnext.git"
+  before_script:
+    - _DOCKER_RELEASE_IMAGE_TAG="$CI_COMMIT_REF_NAME-`printf %010d $CI_PIPELINE_ID`-$CI_COMMIT_SHORT_SHA"
+    - echo "_DOCKER_BUILD_EXTRA_ARGS=$_DOCKER_BUILD_EXTRA_ARGS"
