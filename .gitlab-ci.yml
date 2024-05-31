@@ -1,7 +1,7 @@
 include:
-  - project: 'devops/gitlab-ci-template'
+  - project: 'nentangso/devops/gitlab-ci-template'
     file: '/.Docker.gitlab-ci.yml'
-  - project: 'devops/gitlab-ci-template'
+  - project: 'nentangso/devops/gitlab-ci-template'
     file: 'Trigger.ArgoCD.gitlab-ci.yml'
 
 build-docker:
