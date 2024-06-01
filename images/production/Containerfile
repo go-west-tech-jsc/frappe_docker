@@ -5,6 +5,8 @@ ARG FRAPPE_BRANCH=version-15
 ARG FRAPPE_PATH=https://github.com/frappe/frappe
 ARG ERPNEXT_REPO=https://github.com/frappe/erpnext
 ARG ERPNEXT_BRANCH=version-15
+ARG HRMS_REPO=https://github.com/frappe/hrms
+ARG HRMS_BRANCH=version-15
 
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_BASE} AS base
 
@@ -108,6 +110,8 @@ ARG FRAPPE_BRANCH
 ARG FRAPPE_PATH
 ARG ERPNEXT_REPO
 ARG ERPNEXT_BRANCH
+ARG HRMS_REPO
+ARG HRMS_BRANCH
 
 RUN bench init \
   --frappe-branch=${FRAPPE_BRANCH} \
@@ -119,6 +123,7 @@ RUN bench init \
   /home/frappe/frappe-bench && \
   cd /home/frappe/frappe-bench && \
   bench get-app --branch=${ERPNEXT_BRANCH} --resolve-deps erpnext ${ERPNEXT_REPO} && \
+  bench get-app --branch=${HRMS_BRANCH} --resolve-deps hrms ${HRMS_REPO} && \
   echo "{}" > sites/common_site_config.json && \
   find apps -mindepth 1 -path "*/.git" | xargs rm -fr
 
