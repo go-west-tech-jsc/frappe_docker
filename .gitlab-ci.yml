@@ -15,3 +15,5 @@ build-docker:
       --build-arg FRAPPE_PATH=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/frappe.git
       --build-arg ERPNEXT_BRANCH=$CI_COMMIT_REF_NAME
       --build-arg ERPNEXT_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/erpnext.git
+      --build-arg HRMS_BRANCH=$CI_COMMIT_REF_NAME
+      --build-arg HRMS_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/hrms.git
