@@ -17,3 +17,6 @@ build-docker:
       --build-arg ERPNEXT_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/erpnext.git
       --build-arg HRMS_BRANCH=$CI_COMMIT_REF_NAME
       --build-arg HRMS_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/hrms.git
+      --build-arg CUSTOM_APP1_NAME=golf_management
+      --build-arg CUSTOM_APP1_BRANCH=$CI_COMMIT_REF_NAME
+      --build-arg CUSTOM_APP1_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/golfy/golf-management.git
