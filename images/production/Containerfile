@@ -145,17 +145,17 @@ RUN bench init \
   echo "{}" > sites/common_site_config.json
 
 RUN [ -n "$CUSTOM_APP1_NAME" ] && \
-  [ -n "$CUSTOM_APP1_REPO" ] && 
+  [ -n "$CUSTOM_APP1_REPO" ] && \
   [ -n "$CUSTOM_APP1_BRANCH" ] && \
   bench get-app --branch=${CUSTOM_APP1_REPO} --resolve-deps ${CUSTOM_APP1_NAME} ${CUSTOM_APP1_BRANCH}
 
 RUN [ -n "$CUSTOM_APP2_NAME" ] && \
-  [ -n "$CUSTOM_APP2_REPO" ] && 
+  [ -n "$CUSTOM_APP2_REPO" ] && \
   [ -n "$CUSTOM_APP2_BRANCH" ] && \
   bench get-app --branch=${CUSTOM_APP2_REPO} --resolve-deps ${CUSTOM_APP2_NAME} ${CUSTOM_APP2_BRANCH}
 
 RUN [ -n "$CUSTOM_APP3_NAME" ] && \
-  [ -n "$CUSTOM_APP3_REPO" ] && 
+  [ -n "$CUSTOM_APP3_REPO" ] && \
   [ -n "$CUSTOM_APP3_BRANCH" ] && \
   bench get-app --branch=${CUSTOM_APP3_REPO} --resolve-deps ${CUSTOM_APP3_NAME} ${CUSTOM_APP3_BRANCH}
 
