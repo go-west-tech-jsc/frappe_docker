@@ -147,19 +147,23 @@ RUN bench init \
 RUN [ -n "$CUSTOM_APP1_NAME" ] && \
   [ -n "$CUSTOM_APP1_REPO" ] && \
   [ -n "$CUSTOM_APP1_BRANCH" ] && \
+  cd /home/frappe/frappe-bench && \
   bench get-app --branch=${CUSTOM_APP1_BRANCH} --resolve-deps ${CUSTOM_APP1_NAME} ${CUSTOM_APP1_REPO}
 
 RUN [ -n "$CUSTOM_APP2_NAME" ] && \
   [ -n "$CUSTOM_APP2_REPO" ] && \
   [ -n "$CUSTOM_APP2_BRANCH" ] && \
+  cd /home/frappe/frappe-bench && \
   bench get-app --branch=${CUSTOM_APP2_BRANCH} --resolve-deps ${CUSTOM_APP2_NAME} ${CUSTOM_APP2_REPO}
 
 RUN [ -n "$CUSTOM_APP3_NAME" ] && \
   [ -n "$CUSTOM_APP3_REPO" ] && \
   [ -n "$CUSTOM_APP3_BRANCH" ] && \
+  cd /home/frappe/frappe-bench && \
   bench get-app --branch=${CUSTOM_APP3_BRANCH} --resolve-deps ${CUSTOM_APP3_NAME} ${CUSTOM_APP3_REPO}
 
-RUN find apps -mindepth 1 -path "*/.git" | xargs rm -fr
+RUN cd /home/frappe/frappe-bench && \
+  find apps -mindepth 1 -path "*/.git" | xargs rm -fr
 
 FROM base as erpnext
 
