@@ -145,8 +145,7 @@ RUN bench init \
   echo "{}" > sites/common_site_config.json
 
 COPY resources/get-custom-apps.sh /usr/local/bin/get-custom-apps.sh
-RUN chmod +x /usr/local/bin/get-custom-apps.sh && \
-  source /usr/local/bin/get-custom-apps.sh
+RUN /usr/local/bin/get-custom-apps.sh
 
 RUN cd /home/frappe/frappe-bench && \
   find apps -mindepth 1 -path "*/.git" | xargs rm -fr
