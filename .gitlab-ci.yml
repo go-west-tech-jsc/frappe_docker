@@ -17,9 +17,12 @@ build-docker:
       --build-arg ERPNEXT_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/erpnext.git
       --build-arg HRMS_BRANCH=$CI_COMMIT_REF_NAME
       --build-arg HRMS_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/frappe/hrms.git
-      --build-arg CUSTOM_APP1_NAME=golfy
+      --build-arg CUSTOM_APP1_NAME=gowest_translations
       --build-arg CUSTOM_APP1_BRANCH=$CI_COMMIT_REF_NAME
-      --build-arg CUSTOM_APP1_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/golfy/golfy.git
-      --build-arg CUSTOM_APP2_NAME=gowest
+      --build-arg CUSTOM_APP1_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/golfy/gowest_translations.git
+      --build-arg CUSTOM_APP2_NAME=golfy
       --build-arg CUSTOM_APP2_BRANCH=$CI_COMMIT_REF_NAME
-      --build-arg CUSTOM_APP2_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/subscription/gowest.git
+      --build-arg CUSTOM_APP2_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/golfy/golfy.git
+      --build-arg CUSTOM_APP3_NAME=gowest
+      --build-arg CUSTOM_APP3_BRANCH=$CI_COMMIT_REF_NAME
+      --build-arg CUSTOM_APP3_REPO=https://$CI_GITLAB_USER:$CI_GITLAB_ACCESS_TOKEN@gitlab.com/nentangso/west/development/subscription/gowest.git
