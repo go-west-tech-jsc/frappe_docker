@@ -4,6 +4,13 @@ include:
   - project: 'nentangso/devops/gitlab-ci-template'
     file: 'Trigger.ArgoCD.gitlab-ci.yml'
 
+.continuous-integration-overrides:
+  rules:
+  - if: $CI_PIPELINE_SOURCE =~ /^(merge_request_event|external_pull_request_event)$/
+    when: never
+  - if: $CI_COMMIT_REF_NAME =~ /^(develop|main)$/
+  - when: never
+
 build-docker:
   extends: .build-docker-template
   variables:
