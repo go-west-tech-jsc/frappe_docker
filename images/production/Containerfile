@@ -131,6 +131,9 @@ ARG CUSTOM_APP3_NAME
 ARG CUSTOM_APP3_REPO
 ARG CUSTOM_APP3_BRANCH
 
+RUN cd /home/frappe/frappe-bench && \
+    ./env/bin/pip3 install ddtrace
+
 RUN bench init \
   --frappe-branch=${FRAPPE_BRANCH} \
   --frappe-path=${FRAPPE_PATH} \
@@ -163,9 +166,8 @@ VOLUME [ \
   "/home/frappe/frappe-bench/sites/assets", \
   "/home/frappe/frappe-bench/logs" \
 ]
-
 CMD [ \
-  "ddtrace-run", \
+  "/home/frappe/frappe-bench/env/bin/ddtrace-run", \ 
   "/home/frappe/frappe-bench/env/bin/gunicorn", \
   "--chdir=/home/frappe/frappe-bench/sites", \
   "--bind=0.0.0.0:8000", \
