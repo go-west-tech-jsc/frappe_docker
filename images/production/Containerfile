@@ -73,7 +73,7 @@ RUN useradd -ms /bin/bash frappe \
     # Clean up
     && rm -rf /var/lib/apt/lists/* \
     && rm -fr /etc/nginx/sites-enabled/default \
-    && pip3 install frappe-bench ddtrace \
+    && pip3 install frappe-bench \
     # Fixes for non-root nginx and logs to stdout
     && sed -i '/user www-data/d' /etc/nginx/nginx.conf \
     && ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log \
@@ -166,11 +166,8 @@ VOLUME [ \
   "/home/frappe/frappe-bench/logs" \
 ]
 
-RUN cd /home/frappe/frappe-bench && \
-    ./env/bin/pip3 install ddtrace
     
 CMD [ \
-  "/home/frappe/frappe-bench/env/bin/ddtrace-run", \ 
   "/home/frappe/frappe-bench/env/bin/gunicorn", \
   "--chdir=/home/frappe/frappe-bench/sites", \
   "--bind=0.0.0.0:8000", \
