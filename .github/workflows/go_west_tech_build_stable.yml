@@ -1,0 +1,16 @@
+name: Stable build by Go West Tech
+
+on:
+  # Triggered from go-west-tech-jsc/frappe, go-west-tech-jsc/erpnext and go-west-tech-jsc/hrms on releases
+  repository_dispatch:
+
+  workflow_dispatch:
+
+jobs:
+  v15:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
