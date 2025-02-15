@@ -8,9 +8,10 @@ on:
 
 jobs:
   v15:
-    runs-on: ubuntu-latest
-    if: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    uses: ./.github/workflows/docker-build-push.yml
+    with:
+      repo: erpnext
+      version: "15"
+      push: false
+      python_version: 3.11.6
+      node_version: 18.18.2
