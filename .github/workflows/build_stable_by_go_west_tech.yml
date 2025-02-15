@@ -8,13 +8,10 @@ on:
 
 jobs:
   v15:
-    uses: ./.github/workflows/docker-build-push.yml
+    uses: ./.github/workflows/docker-build-push_by_go_west_tech.yml
     with:
       repo: erpnext
       version: "15"
-      push: false
+      push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
       node_version: 18.18.2
-    secrets:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
