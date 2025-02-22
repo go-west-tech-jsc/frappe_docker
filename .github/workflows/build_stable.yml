@@ -47,7 +47,7 @@ jobs:
     with:
       repo: erpnext
       version: "15"
-      push: ${{ github.repository == 'frappe/frappe_docker' && github.event_name != 'pull_request' }}
+      push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
       node_version: 18.18.2
     secrets:
