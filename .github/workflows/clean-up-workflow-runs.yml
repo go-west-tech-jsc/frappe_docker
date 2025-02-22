@@ -8,7 +8,7 @@ on:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'go-west-tech-jsc/golfy' && github.event_name != 'pull_request' }}
+    if: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
 
     steps:
       - name: Delete completed workflow runs
