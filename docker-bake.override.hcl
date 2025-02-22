@@ -2,7 +2,7 @@ target "erpnext" {
     inherits = ["default-args"]
     context = "."
     dockerfile = "images/custom/Containerfile"
-    target = "erpnext"
+    target = "backend"
     tags = tag("erpnext", "${ERPNEXT_VERSION}")
 }
 
@@ -18,6 +18,6 @@ target "build" {
     inherits = ["default-args"]
     context = "."
     dockerfile = "images/custom/Containerfile"
-    target = "build"
+    target = "builder"
     tags = tag("build", "${ERPNEXT_VERSION}")
 }
