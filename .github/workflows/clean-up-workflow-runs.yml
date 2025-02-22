@@ -1,0 +1,20 @@
+name: Clean Up Workflow Runs
+
+on:
+  schedule:
+    - cron: '0 17 * * *' # Runs daily at midnight UTC+7
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'go-west-tech-jsc/golfy' && github.event_name != 'pull_request' }}
+
+    steps:
+      - name: Delete completed workflow runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api repos/${{ github.repository }}/actions/runs \
+            --paginate --jq '.workflow_runs[] | select(.status == "completed") | .id' | \
+          xargs -I {} gh api repos/${{ github.repository }}/actions/runs/{} -X DELETE
