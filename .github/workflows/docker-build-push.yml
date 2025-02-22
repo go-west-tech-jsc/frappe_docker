@@ -27,6 +27,8 @@ on:
         required: false
       DOCKERHUB_TOKEN:
         required: false
+      APPS_JSON_BASE64:
+        required: false
 
 jobs:
   build:
@@ -68,6 +70,7 @@ jobs:
           echo "FRAPPE_VERSION=version-15" >> "$GITHUB_ENV"
           echo "ERPNEXT_REPO=https://github.com/${{ github.repository_owner }}/erpnext" >> "$GITHUB_ENV"
           echo "ERPNEXT_VERSION=version-15" >> "$GITHUB_ENV"
+          echo "APPS_JSON_BASE64=${{ secrets.APPS_JSON_BASE64 }}" >> "$GITHUB_ENV"
 
       - name: Build
         uses: docker/bake-action@v6.5.0
