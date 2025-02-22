@@ -1,3 +1,20 @@
+variable "APPS_JSON_BASE64" {
+    default = ""
+}
+
+target "default-args" {
+    args = {
+        FRAPPE_PATH = "${FRAPPE_REPO}"
+        ERPNEXT_PATH = "${ERPNEXT_REPO}"
+        BENCH_REPO = "${BENCH_REPO}"
+        FRAPPE_BRANCH = "${FRAPPE_VERSION}"
+        ERPNEXT_BRANCH = "${ERPNEXT_VERSION}"
+        PYTHON_VERSION = "${PYTHON_VERSION}"
+        NODE_VERSION = "${NODE_VERSION}"
+        APPS_JSON_BASE64 = "${APPS_JSON_BASE64}"
+    }
+}
+
 target "erpnext" {
     inherits = ["default-args"]
     context = "."
