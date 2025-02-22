@@ -64,6 +64,8 @@ jobs:
         run: |
           echo "PYTHON_VERSION=${{ inputs.python_version }}" >> "$GITHUB_ENV"
           echo "NODE_VERSION=${{ inputs.node_version }}" >> "$GITHUB_ENV"
+          echo "FRAPPE_REPO=https://github.com/${{ github.repository_owner }}/frappe" >> "$GITHUB_ENV"
+          echo "ERPNEXT_REPO=https://github.com/${{ github.repository_owner }}/erpnext" >> "$GITHUB_ENV"
 
       - name: Build
         uses: docker/bake-action@v6.5.0
