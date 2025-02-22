@@ -23,12 +23,10 @@ on:
         type: string
         description: NodeJS Version
     secrets:
-      DOCKERHUB_USERNAME:
-        required: false
-      DOCKERHUB_TOKEN:
-        required: false
       APPS_JSON_BASE64:
-        required: false
+        required: true
+      REPO_URL:
+        required: true
 
 jobs:
   build:
@@ -60,7 +58,7 @@ jobs:
           platforms: linux/${{ matrix.arch }}
 
       - name: Get latest versions
-        run: python3 ./.github/scripts/get_latest_tags.py --repo ${{ inputs.repo }} --version ${{ inputs.version }}
+        run: python3 ./.github/scripts/get_custom_app_latest_tags.py --repo ${{ inputs.repo }} --version ${{ inputs.version }} --repo_url ${{ secrets.REPO_URL }}
 
       - name: Set build args
         run: |
