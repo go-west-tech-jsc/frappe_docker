@@ -9,12 +9,12 @@ import sys
 from typing import Literal
 
 Repo = Literal["frappe", "erpnext"]
-MajorVersion = Literal["12", "13", "14", "15", "develop"]
+MajorVersion = Literal["12", "13", "14", "15", "develop", "version-14", "version-15"]
 
 
 def get_latest_tag(repo: Repo, version: MajorVersion) -> str:
-    if version == "develop":
-        return "develop"
+    if version in ["develop", "version-14", "version-15"]:
+        return version
     regex = rf"v{version}.*"
     refs = subprocess.check_output(
         (
@@ -57,7 +57,7 @@ def main(_args: list[str]) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", choices=["frappe", "erpnext"], required=True)
     parser.add_argument(
-        "--version", choices=["12", "13", "14", "15", "develop"], required=True
+        "--version", choices=["12", "13", "14", "15", "develop", "version-14", "version-15"], required=True
     )
     args = parser.parse_args(_args)
 
