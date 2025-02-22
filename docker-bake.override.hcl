@@ -2,6 +2,10 @@ variable "APPS_JSON_BASE64" {
     default = ""
 }
 
+variable "GOLFY_VERSION" {
+    default = "develop"
+}
+
 target "default-args" {
     args = {
         FRAPPE_PATH = "${FRAPPE_REPO}"
@@ -12,6 +16,7 @@ target "default-args" {
         PYTHON_VERSION = "${PYTHON_VERSION}"
         NODE_VERSION = "${NODE_VERSION}"
         APPS_JSON_BASE64 = "${APPS_JSON_BASE64}"
+        GOLFY_VERSION = "${GOLFY_VERSION}"
     }
 }
 
@@ -20,7 +25,7 @@ target "erpnext" {
     context = "."
     dockerfile = "images/custom/Containerfile"
     target = "backend"
-    tags = tag("erpnext", "${ERPNEXT_VERSION}")
+    tags = concat(tag("erpnext", "${ERPNEXT_VERSION}"), tag("golfy", "${GOLFY_VERSION}"))
 }
 
 target "base" {
