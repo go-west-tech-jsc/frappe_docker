@@ -8,9 +8,9 @@ import subprocess
 import sys
 from typing import Literal
 
-def get_latest_tag(repo: str, repo_url: str, version: str) -> str:
-    if version == "develop":
-        return "develop"
+def get_latest_tag(repo_url: str, version: str) -> str:
+    if version in ["develop", "staging", "main"]:
+        return version
     regex = rf"v{version}.*"
     refs = subprocess.check_output(
         (
@@ -55,13 +55,12 @@ def main(_args: list[str]) -> int:
     parser.add_argument("--version", required=True)
     args = parser.parse_args(_args)
 
-    latest_tag = get_latest_tag(args.repo, args.repo_url, args.version)
+    latest_tag = get_latest_tag(args.repo_url, args.version)
     file_name = os.getenv("GITHUB_ENV")
     if file_name:
         update_env(file_name, args.repo, latest_tag)
     _print_resp(args.repo, latest_tag)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))
