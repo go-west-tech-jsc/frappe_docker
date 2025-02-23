@@ -34,10 +34,10 @@ jobs:
     uses: ./.github/workflows/docker-build-push.yml
     with:
       repo: golfy
-      version: "1"
+      version: main
       push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
       node_version: 18.18.2
     secrets:
-      APPS_JSON_BASE64: ${{ secrets.APPS_JSON_BASE64 }}
+      APPS_JSON_BASE64: ${{ secrets.APPS_JSON_BASE64_MAIN }}
       REPO_URL: ${{ secrets.REPO_URL }}
