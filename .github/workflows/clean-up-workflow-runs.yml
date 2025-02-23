@@ -2,7 +2,7 @@ name: Clean Up Workflow Runs
 
 on:
   schedule:
-    - cron: '0 17 * * *' # Runs daily at midnight UTC+7
+    - cron: '0 20 * * *' # Runs daily at 3:00 AM UTC+7
   workflow_dispatch: # Allows manual triggering
 
 jobs:
