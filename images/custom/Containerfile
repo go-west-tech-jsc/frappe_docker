@@ -71,8 +71,6 @@ RUN useradd -ms /bin/bash frappe \
     && chown -R frappe:frappe /run/nginx.pid \
     && chmod 755 /usr/local/bin/nginx-entrypoint.sh \
     && chmod 644 /templates/nginx/frappe.conf.template
-# Fix breaking change in click 8.2.0
-RUN pip install click==8.1.8
 
 FROM base AS builder
 
