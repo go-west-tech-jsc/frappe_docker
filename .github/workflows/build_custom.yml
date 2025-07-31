@@ -1,4 +1,4 @@
-name: Stable build (custom apps)
+name: Stable build (golfy)
 
 on:
   pull_request:
