@@ -1,0 +1,43 @@
+name: Stable build (helpdesk)
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - images/production/**
+      - overrides/**
+      - tests/**
+      - compose.yaml
+      - docker-bake.hcl
+      - example.env
+      - .github/workflows/build_stable.yml
+
+  push:
+    branches:
+      - main
+    paths:
+      - images/production/**
+      - overrides/**
+      - tests/**
+      - compose.yaml
+      - docker-bake.hcl
+      - example.env
+
+  # Triggered from frappe/frappe and frappe/erpnext on releases
+  repository_dispatch:
+
+  workflow_dispatch:
+
+jobs:
+  golfy:
+    uses: ./.github/workflows/docker-build-push.yml
+    with:
+      repo: golfy
+      version: main
+      push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
+      python_version: 3.11.6
+      node_version: 18.18.2
+    secrets:
+      APPS_JSON_BASE64: ${{ secrets.APPS_JSON_BASE64_HELPDESK_MAIN }}
+      REPO_URL: ${{ secrets.REPO_URL }}
