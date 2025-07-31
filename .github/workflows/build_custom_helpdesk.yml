@@ -11,7 +11,7 @@ on:
       - compose.yaml
       - docker-bake.hcl
       - example.env
-      - .github/workflows/build_stable.yml
+      - .github/workflows/build_custom_helpdesk.yml
 
   push:
     branches:
@@ -30,10 +30,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  golfy:
+  helpdesk:
     uses: ./.github/workflows/docker-build-push.yml
     with:
-      repo: golfy
+      repo: helpdesk
       version: main
       push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
