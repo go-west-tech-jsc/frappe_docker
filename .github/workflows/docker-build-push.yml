@@ -64,7 +64,7 @@ jobs:
         if: ${{ inputs.repo == 'golfy' }}
         run: |
           SHORT_SHA="${GITHUB_SHA::7}"
-          echo "GOLFY_VERSION=${GITHUB_REF_NAME}-${GITHUB_RUN_ID}-${SHORT_SHA}" >> "$GITHUB_ENV"
+          echo "GOLFY_VERSION=${{ inputs.version }}-${GITHUB_RUN_ID}-${SHORT_SHA}" >> "$GITHUB_ENV"
 
       - name: Set build args
         run: |
