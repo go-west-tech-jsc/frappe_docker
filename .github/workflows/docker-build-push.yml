@@ -60,6 +60,12 @@ jobs:
       - name: Get latest versions
         run: python3 ./.github/scripts/get_custom_app_latest_tags.py --repo ${{ inputs.repo }} --version ${{ inputs.version }} --repo_url ${{ secrets.REPO_URL }}
 
+      - name: Set custom docker tag
+        if: ${{ inputs.repo == 'golfy' }}
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          echo "GOLFY_VERSION=${GITHUB_REF_NAME}-${GITHUB_RUN_ID}-${SHORT_SHA}" >> "$GITHUB_ENV"
+
       - name: Set build args
         run: |
           echo "PYTHON_VERSION=${{ inputs.python_version }}" >> "$GITHUB_ENV"
