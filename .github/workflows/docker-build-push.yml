@@ -63,8 +63,7 @@ jobs:
       - name: Set custom docker tag
         if: ${{ inputs.repo == 'golfy' }}
         run: |
-          SHORT_SHA="${GITHUB_SHA::7}"
-          echo "GOLFY_VERSION=${{ inputs.version }}-${GITHUB_RUN_ID}-${SHORT_SHA}" >> "$GITHUB_ENV"
+          echo "GOLFY_VERSION=${{ inputs.version }}-${GITHUB_RUN_ID}" >> "$GITHUB_ENV"
 
       - name: Set build args
         run: |
