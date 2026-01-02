@@ -26,8 +26,8 @@ jobs:
       repo: golfy
       version: develop
       push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
-      python_version: 3.11.6
-      node_version: 18.18.2
+      python_version: 3.14.2
+      node_version: 24.12.0
     secrets:
       APPS_JSON_BASE64: ${{ secrets.APPS_JSON_BASE64 }}
       REPO_URL: ${{ secrets.REPO_URL }}

@@ -71,6 +71,8 @@ RUN apt-get update \
     tk-dev \
     liblzma-dev \
     file \
+    # For MIME type detection
+    media-types \
     && rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
@@ -98,7 +100,7 @@ WORKDIR /home/frappe
 
 # Install Python via pyenv
 ENV PYTHON_VERSION_V14=3.10.13
-ENV PYTHON_VERSION=3.11.6
+ENV PYTHON_VERSION=3.14.2
 ENV PYENV_ROOT=/home/frappe/.pyenv
 ENV PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
@@ -125,7 +127,7 @@ RUN git clone ${GIT_REPO} --depth 1 -b ${GIT_BRANCH} .bench \
 
 # Install Node via nvm
 ENV NODE_VERSION_14=16.20.2
-ENV NODE_VERSION=18.18.2
+ENV NODE_VERSION=24.12.0
 ENV NVM_DIR=/home/frappe/.nvm
 ENV PATH=${NVM_DIR}/versions/node/v${NODE_VERSION}/bin/:${PATH}
 

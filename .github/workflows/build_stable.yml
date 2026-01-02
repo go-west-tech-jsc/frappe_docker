@@ -49,7 +49,19 @@ jobs:
       version: "15"
       push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
-      node_version: 18.18.2
+      node_version: 20.19.2
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  v16:
+    uses: ./.github/workflows/docker-build-push.yml
+    with:
+      repo: erpnext
+      version: "16"
+      push: ${{ github.repository == 'frappe/frappe_docker' && github.event_name != 'pull_request' }}
+      python_version: 3.14.2
+      node_version: 24.12.0
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -62,10 +74,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.10"
 

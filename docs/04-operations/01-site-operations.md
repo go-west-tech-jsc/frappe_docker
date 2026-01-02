@@ -7,6 +7,7 @@
 Note:
 
 - Wait for the `db` service to start and `configurator` to exit before trying to create a new site. Usually this takes up to 10 seconds.
+- Also you have to pass `-p <project_name>` if `-p` passed previously eg. `docker-compose -p <project_name> exec (rest of the command)`.
 
 ```sh
 docker-compose exec backend bench new-site --mariadb-user-host-login-scope=% --db-root-password <db-password> --admin-password <admin-password> <site-name>
@@ -14,7 +15,7 @@ docker-compose exec backend bench new-site --mariadb-user-host-login-scope=% --d
 
 If you need to install some app, specify `--install-app`. To see all options, just run `bench new-site --help`.
 
-To create Postgres site (assuming you already use [Postgres compose override](images-and-compose-files.md#overrides)) you need have to do set `root_login` and `root_password` in common config before that:
+To create Postgres site (assuming you already use [Postgres compose override](../02-setup/05-overrides.md)) you need have to do set `root_login` and `root_password` in common config before that:
 
 ```sh
 docker-compose exec backend bench set-config -g root_login <root-login>
