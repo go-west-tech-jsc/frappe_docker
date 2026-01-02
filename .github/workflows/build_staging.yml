@@ -37,7 +37,7 @@ jobs:
       version: main
       push: ${{ github.repository == 'go-west-tech-jsc/frappe_docker' && github.event_name != 'pull_request' }}
       python_version: 3.11.6
-      node_version: 18.18.2
+      node_version: 20.19.2
     secrets:
       APPS_JSON_BASE64: ${{ secrets.APPS_JSON_BASE64_STAGING }}
       REPO_URL: ${{ secrets.REPO_URL }}
