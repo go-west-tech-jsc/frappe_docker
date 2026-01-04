@@ -39,7 +39,7 @@ jobs:
           - 5000:5000
     strategy:
       matrix:
-        arch: [amd64, arm64]
+        arch: [amd64]
 
     steps:
       - name: Checkout
