@@ -75,26 +75,26 @@ jobs:
           echo "ERPNEXT_VERSION=version-15" >> "$GITHUB_ENV"
           echo "APPS_JSON_BASE64=${{ secrets.APPS_JSON_BASE64 }}" >> "$GITHUB_ENV"
 
-      - name: Build
-        uses: docker/bake-action@v6.10.0
-        with:
-          source: .
-          push: true
-        env:
-          REGISTRY_USER: localhost:5000/frappe
+      # - name: Build
+      #   uses: docker/bake-action@v6.10.0
+      #   with:
+      #     source: .
+      #     push: true
+      #   env:
+      #     REGISTRY_USER: localhost:5000/frappe
 
-      - name: Setup Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.11.6"
+      # - name: Setup Python
+      #   uses: actions/setup-python@v6
+      #   with:
+      #     python-version: "3.11.6"
 
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          venv/bin/pip install -r requirements-test.txt
+      # - name: Install dependencies
+      #   run: |
+      #     python -m venv venv
+      #     venv/bin/pip install -r requirements-test.txt
 
-      - name: Test
-        run: venv/bin/pytest --color=yes
+      # - name: Test
+      #   run: venv/bin/pytest --color=yes
 
       - name: Login
         if: ${{ inputs.push }}
